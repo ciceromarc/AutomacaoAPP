@@ -23,7 +23,7 @@ test_cypress:
     # Executa os testes com geração de relatório Allure
     - service dbus start
     - npm install
-    - apt-get install -y xvfb xorg gtk2-engines-pixbuf dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable imagemagick x11-apps
+    - apt-get update && apt-get install -y xvfb xorg gtk2-engines-pixbuf dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable imagemagick x11-apps
     - npx cypress install
     - DISPLAY=99 npm run cypress:run
     - npm run report:allure
