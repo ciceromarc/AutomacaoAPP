@@ -28,8 +28,8 @@ test_cypress:
     - echo "172.32.52.59 novo-kim-tst.usekim.com.br kim-idp-dev.usekim.com.br" >> /etc/hosts
     - npx cypress install
     - npm run cypress:run
-    - npm run report:allure:ci
   after_script:
+    - npm run report:allure:ci
     # Lista arquivos gerados para debug
     - ls -la allure-results/ || echo "Pasta allure-results não encontrada"
     - ls -la cypress/screenshots/ || echo "Pasta screenshots não encontrada"
