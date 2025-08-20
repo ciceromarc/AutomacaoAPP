@@ -14,7 +14,7 @@ variables:
 # Stage 2: Execução dos testes Cypress
 test_cypress:
   stage: test
-  image: cypress/browsers:node18.12.0-chrome106-ff106
+  image: node:18
   before_script:
     # Configurações para ambiente headless
     - export DISPLAY=:99
