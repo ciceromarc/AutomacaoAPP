@@ -14,15 +14,15 @@ variables:
 # Stage 2: Execução dos testes Cypress
 test_cypress:
   stage: test
-  image: node:18
+  image: cypress/included:latest
   before_script:
     # Configurações para ambiente headless
-    - export DISPLAY=:99
+    #- export DISPLAY=:99
     - export CYPRESS_baseUrl=${CYPRESS_BASE_URL:-"https://novo-kim-tst.usekim.com.br/"}
   script:
     # Executa os testes com geração de relatório Allure
     - npm install
-    - apt-get update && apt-get install -y libnss libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
+    #- apt-get update && apt-get install -y libnss libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
     - npx cypress install
     - DISPLAY=99 npm run cypress:run
     - npm run report:allure
