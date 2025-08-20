@@ -10,50 +10,22 @@ stages:
 variables:
   NODE_VERSION: "18"
   ALLURE_VERSION: "2.34.1"
-  # Configurações específicas para Cypress CI
-  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cypress_cache"
-  CYPRESS_RUN_BINARY: "$CI_PROJECT_DIR/cypress_cache/Cypress/*/Cypress/Cypress"
 
 # Stage 2: Execução dos testes Cypress
 test_cypress:
   stage: test
   image: cypress/browsers:node18.12.0-chrome106-ff106
-  cache:
-    key: 
-      files:
-        - package-lock.json
-    paths:
-      - .npm/
-      - cypress_cache/
-    policy: pull-push
   before_script:
-    # Atualiza pacotes e instala dependências necessárias
-    - apt-get update -qq
-    - apt-get install -y -qq xvfb gtk2-engines-pixbuf xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable imagemagick x11-apps
-    
-    # Configurações do display virtual
+    # Configurações para ambiente headless
     - export DISPLAY=:99
-    - Xvfb :99 -screen 0 1280x1024x24 -ac +extension GLX +render -noreset > /dev/null 2>&1 &
-    - sleep 3
-    
-    # Configurações de ambiente
     - export CYPRESS_baseUrl=${CYPRESS_BASE_URL:-"https://novo-kim-tst.usekim.com.br/"}
-    - export CI=true
-    - export ELECTRON_DISABLE_SANDBOX=1
-    - mkdir -p $CYPRESS_CACHE_FOLDER
-    
   script:
-    # Instala dependências
-    - npm ci --cache .npm --prefer-offline
-    
-    # Verifica se o Cypress está instalado corretamente
-    - npx cypress verify
-    
-    # Executa os testes
-    - npm run cypress:run:ci
-    
-    # Gera relatório Allure (apenas se tiver resultados)
-    - npm run report:allure:ci
+    # Executa os testes com geração de relatório Allure
+    - service dbus start
+    - npm install
+    - npx cypress install
+    - npm run cypress:run
+    - npm run report:allure
   after_script:
     # Lista arquivos gerados para debug
     - ls -la allure-results/ || echo "Pasta allure-results não encontrada"
