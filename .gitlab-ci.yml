@@ -19,14 +19,22 @@ test_cypress:
     # Configurações para ambiente headless
     #- export DISPLAY=:99
     - export CYPRESS_baseUrl=${CYPRESS_BASE_URL:-"https://novo-kim-tst.usekim.com.br/"}
+    # Instalar Java para o Allure
+    - apt-get update && apt-get install -y default-jdk
+    - export JAVA_HOME=/usr/lib/jvm/default-java
+    - export PATH=$JAVA_HOME/bin:$PATH
   script:
-    # Executa os testes com geração de relatório Allure
-    - npm install
-    #- apt-get update && apt-get install -y libnss libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev
+    # Instalar dependências do sistema primeiro
     - apt-get update && apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-    - service dbus start    
+    - service dbus start
+    # Verificar se Java está instalado
+    - java -version
+    - echo $JAVA_HOME
+    # Configurar hosts e instalar dependências
     - echo "172.32.52.59 novo-kim-tst.usekim.com.br kim-idp-dev.usekim.com.br" >> /etc/hosts
+    - npm install
     - npx cypress install
+    # Executa os testes com geração de relatório Allure
     - npm run cypress:run
   after_script:
     - npm run report:allure:ci
