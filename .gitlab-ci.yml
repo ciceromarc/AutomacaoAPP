@@ -38,6 +38,7 @@ test_cypress:
     when: always
     paths:
       - allure-results/
+      - allure-report/
       - cypress/screenshots/
       - cypress/videos/
       - cypress/reports/
