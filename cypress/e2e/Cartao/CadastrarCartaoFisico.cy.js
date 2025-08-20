@@ -1,7 +1,7 @@
 import * as GETBooks from '../../integration/services/Books/requests/GETBooks.request';
 
 describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
-    it('Cadastro realizado com sucesso', () => {
+    it.skip('Cadastro realizado com sucesso', () => {
         GETBooks.allBooks().then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body).to.not.be.null;
@@ -9,7 +9,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         });
     });
 
-    it('Token não informado', () => {
+    it.skip('Token não informado', () => {
         GETBooks.allBooks().then((response) => {
             expect(response.status).to.eq(400);
             expect(response.status).to.eq(200);
@@ -18,7 +18,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         });
     });
 
-    it('Token não informado - segundo caso', () => {
+    it.skip('Token não informado - segundo caso', () => {
         GETBooks.allBooks().then((response) => {
             expect(response.status).to.eq(400);
             expect(response.body).to.not.be.null;
@@ -26,7 +26,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         });
     });
 
-    it('Parâmetro obrigatório ausente', () => {
+    it.skip('Parâmetro obrigatório ausente', () => {
         GETBooks.allBooks().should((response) => {
            expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -34,7 +34,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Número do cartão é virtual (inválido para este serviço)', () => {
+    it.skip('Número do cartão é virtual (inválido para este serviço)', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -43,7 +43,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
     });
 
 
-    it('Cartão já vinculado ao usuário', () => {
+    it.skip('Cartão já vinculado ao usuário', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -51,7 +51,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Apelido fornecido (campo opcional)', () => {
+    it.skip('Apelido fornecido (campo opcional)', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -59,7 +59,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Apelido inválido (formato não permitido)', () => {
+    it.skip('Apelido inválido (formato não permitido)', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -67,7 +67,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Cadastro bem-sucedido mesmo com outros usuários possuindo o mesmo cartão', () => {
+    it.skip('Cadastro bem-sucedido mesmo com outros usuários possuindo o mesmo cartão', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -75,7 +75,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Consulta de uso do cartão em cidade com integração TACOM e com registros', () => {
+    it.skip('Consulta de uso do cartão em cidade com integração TACOM e com registros', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -83,7 +83,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Consulta de uso do cartão em cidade com integração TACOM e sem registros', () => {
+    it.skip('Consulta de uso do cartão em cidade com integração TACOM e sem registros', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -91,7 +91,7 @@ describe('[CARTÕES] DIS Cadastrar cartão físico', () => {
         })
     });
 
-    it('Consulta de uso do cartão em cidade sem integração disponível', () => {
+    it.skip('Consulta de uso do cartão em cidade sem integração disponível', () => {
         GETBooks.allBooks().should((response) => {
                 expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;

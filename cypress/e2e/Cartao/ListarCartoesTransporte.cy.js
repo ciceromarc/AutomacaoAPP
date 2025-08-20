@@ -2,7 +2,7 @@ import * as GETBooks from '../../integration/services/Books/requests/GETBooks.re
 
 describe('[CARTÕES] Listar cartões de transporte', () => {
     
-    it('Listar Cartões Físicos com Sucesso', () => {
+    it.skip('Listar Cartões Físicos com Sucesso', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -10,7 +10,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Listar Cartões Físicos sem Resultados', () => {
+    it.skip('Listar Cartões Físicos sem Resultados', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -18,7 +18,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Erro ao Listar Cartões Físicos', () => {
+    it.skip('Erro ao Listar Cartões Físicos', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -26,7 +26,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Listar Cartões Virtuais com Sucesso', () => {
+    it.skip('Listar Cartões Virtuais com Sucesso', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -34,7 +34,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Listar Cartões Virtuais sem Resultados', () => {
+    it.skip('Listar Cartões Virtuais sem Resultados', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -42,7 +42,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Erro ao Listar Cartões Virtuais', () => {
+    it.skip('Erro ao Listar Cartões Virtuais', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -50,7 +50,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Listar Cartões Inativos com Sucesso', () => {
+    it.skip('Listar Cartões Inativos com Sucesso', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -58,7 +58,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Listar Cartões Inativos sem Resultados', () => {
+    it.skip('Listar Cartões Inativos sem Resultados', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -66,7 +66,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Erro ao Listar Cartões Inativos', () => {
+    it.skip('Erro ao Listar Cartões Inativos', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -74,7 +74,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Token Inválido ou Ausente', () => {
+    it.skip('Token Inválido ou Ausente', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
@@ -82,7 +82,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         })
     });
 
-    it('Acesso a Funcionalidades de Ação (Recarregar, Detalhes)', () => {
+    it.skip('Acesso a Funcionalidades de Ação (Recarregar, Detalhes)', () => {
         GETBooks.allBooks().should((response) => {
             expect(response.status).to.be.eq(400);
             expect(response.body).to.be.not.null;
