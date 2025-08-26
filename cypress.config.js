@@ -11,6 +11,7 @@ module.exports = defineConfig({
       return config
     },
     baseUrl: 'https://novo-kim-tst.usekim.com.br/',
+    chromeWebSecurity: false,
     specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
     supportFile: 'cypress/support/e2e.js'
   },

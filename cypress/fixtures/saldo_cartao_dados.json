@@ -1,0 +1,88 @@
+{
+  "cartao_valido": {
+    "numeroCartao": "036500331442289",
+    "doctoIdentificacao": "123",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 401
+  },
+  "sem_numero_cartao": {
+    "numeroCartao": "",
+    "doctoIdentificacao": "123",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 400
+  },
+  "cartao_invalido": {
+    "numeroCartao": "00000000000000000000",
+    "doctoIdentificacao": "123",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 400,
+    "codigoEsperado": "GLB-E-100000"
+  },
+  "cartao_inexistente": {
+    "numeroCartao": "99999999999999999999",
+    "doctoIdentificacao": "123",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 400,
+    "codigoEsperado": "GLB-E-100000"
+  },
+  "cartao_nao_vinculado": {
+    "numeroCartao": "55554444333322221111",
+    "doctoIdentificacao": "999",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 400
+  },
+  "operadora_tacom": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "2",
+    "timeout": 30000,
+    "expectedStatus": 400
+  },
+  "operadora_propria": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "3",
+    "timeout": 30000,
+    "expectedStatus": 400
+  },
+  "timeout_operadora": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "4",
+    "timeout": 10000,
+    "expectedStatus": 400
+  },
+  "cartao_inativo": {
+    "numeroCartao": "11112222333344445555",
+    "doctoIdentificacao": "123",
+    "idOperadora": "1",
+    "timeout": 30000,
+    "expectedStatus": 400
+  },
+  "tacom_com_registros": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "2",
+    "timeout": 30000,
+    "expectedStatus": 401
+  },
+  "tacom_sem_registros": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "2",
+    "timeout": 30000,
+    "expectedStatus": 401
+  },
+  "sem_integracao": {
+    "numeroCartao": "54561651561561561651",
+    "doctoIdentificacao": "123",
+    "idOperadora": "99",
+    "timeout": 30000,
+    "expectedStatus": 401
+  }
+}

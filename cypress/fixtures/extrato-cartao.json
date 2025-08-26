@@ -1,0 +1,57 @@
+{
+  "cartaoValido": {
+    "numeroCartao": "036500331442289",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoVitoria": {
+    "numeroCartao": "06900000000031",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoSemUso": {
+    "numeroCartao": "06900000000032",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoInvalido": {
+    "numeroCartao": "00000000000000",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoNaoVinculado": {
+    "numeroCartao": "06900000000999",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoInexistente": {
+    "numeroCartao": "00000000000000",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoSemRegistros": {
+    "numeroCartao": "06900000000033",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "operadoras": {
+    "padrao": "1",
+    "vitoria": "157",
+    "tacom": "2",
+    "semIntegracao": "99"
+  }
+}

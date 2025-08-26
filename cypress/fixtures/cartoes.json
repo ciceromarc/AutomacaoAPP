@@ -1,0 +1,68 @@
+{
+  "fisico_sucesso": {
+    "tipoCartao": 1,
+    "statusCartao": true,
+    "expectedStatus": 200,
+    "expectEmpty": false
+  },
+  "fisico_vazio": {
+    "tipoCartao": 1,
+    "statusCartao": false,
+    "expectedStatus": 200,
+    "expectEmpty": true
+  },
+  "fisico_erro": {
+    "tipoCartao": "invalido",
+    "statusCartao": true,
+    "expectedStatus": [
+      400,
+      500
+    ]
+  },
+  "virtual_sucesso": {
+    "tipoCartao": 2,
+    "statusCartao": true,
+    "expectedStatus": 200,
+    "expectEmpty": false
+  },
+  "virtual_vazio": {
+    "tipoCartao": 2,
+    "statusCartao": false,
+    "expectedStatus": 200,
+    "expectEmpty": true
+  },
+  "virtual_erro": {
+    "tipoCartao": "virtual_erro",
+    "statusCartao": true,
+    "expectedStatus": [
+      400,
+      500
+    ]
+  },
+  "inativo_sucesso": {
+    "tipoCartao": 1,
+    "statusCartao": false,
+    "expectedStatus": 200,
+    "expectEmpty": false
+  },
+  "inativo_vazio": {
+    "tipoCartao": 1,
+    "statusCartao": false,
+    "expectedStatus": 200,
+    "expectEmpty": true
+  },
+  "inativo_erro": {
+    "tipoCartao": "inativo_erro",
+    "statusCartao": false,
+    "expectedStatus": [
+      400,
+      500
+    ]
+  },
+  "com_acoes": {
+    "tipoCartao": 1,
+    "statusCartao": true,
+    "expectedStatus": 200,
+    "checkAcoes": true
+  }
+}

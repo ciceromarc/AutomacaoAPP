@@ -1,92 +1,108 @@
-import * as GETBooks from '../../integration/services/Books/requests/GETBooks.request';
+/// <reference types="cypress" />
+import * as Cartao from '../../integration/services/Cartao/requests/GET_Cartao.request';
 
 describe('[CARTÕES] Listar cartões de transporte', () => {
-    
-    it.skip('Listar Cartões Físicos com Sucesso', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+
+    beforeEach(function () {
+        cy.fixture('cartoes').as('cartoes');
+                cy.ObterToken();
     });
 
-    it.skip('Listar Cartões Físicos sem Resultados', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
+    it('Listar Cartões Físicos com Sucesso', function () {
+        const data = this.cartoes.fisico_sucesso;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+            // expect(response.body).to.have.length.greaterThan(0);
+            cy.log('Status:', response.status);
+        });
     });
 
-    it.skip('Erro ao Listar Cartões Físicos', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Listar Cartões Físicos sem Resultados', function () {
+        const data = this.cartoes.fisico_vazio;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
+            expect(response.body).to.be.an('array').that.is.empty;
+        });
     });
 
-    it.skip('Listar Cartões Virtuais com Sucesso', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Erro ao Listar Cartões Físicos', function () {
+        const data = this.cartoes.fisico_erro;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.be.oneOf(data.expectedStatus);
+            expect(response.body).to.have.property('error').or.property('message');
+        });
     });
 
-    it.skip('Listar Cartões Virtuais sem Resultados', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
+    it('Listar Cartões Virtuais com Sucesso', function () {
+        const data = this.cartoes.virtual_sucesso;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+        });
     });
 
-    it.skip('Erro ao Listar Cartões Virtuais', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Listar Cartões Virtuais sem Resultados', function () {
+        const data = this.cartoes.virtual_vazio;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
+            expect(response.body).to.be.an('array').that.is.empty;
+        });
     });
 
-    it.skip('Listar Cartões Inativos com Sucesso', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Erro ao Listar Cartões Virtuais', function () {
+        const data = this.cartoes.virtual_erro;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.be.oneOf(data.expectedStatus);
+            expect(response.body).to.have.property('error').or.property('message');
+        });
     });
 
-    it.skip('Listar Cartões Inativos sem Resultados', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
+    it('Listar Cartões Inativos com Sucesso', function () {
+        const data = this.cartoes.inativo_sucesso;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+        });
     });
 
-    it.skip('Erro ao Listar Cartões Inativos', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Listar Cartões Inativos sem Resultados', function () {
+        const data = this.cartoes.inativo_vazio;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
+            expect(response.body).to.be.an('array').that.is.empty;
+        });
     });
 
-    it.skip('Token Inválido ou Ausente', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
-            expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+    it('Erro ao Listar Cartões Inativos', function () {
+        const data = this.cartoes.inativo_erro;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.be.oneOf(data.expectedStatus);
+            expect(response.body).to.have.property('error').or.property('message');
+        });
     });
 
-    it.skip('Acesso a Funcionalidades de Ação (Recarregar, Detalhes)', () => {
-        GETBooks.allBooks().should((response) => {
-            expect(response.status).to.be.eq(400);
+    it('Acesso a Funcionalidades de Ação (Recarregar, Detalhes)', function () {
+        const data = this.cartoes.com_acoes;
+
+        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+            expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.not.null;
-            console.log(response.status)
-        })
+
+            response.body.forEach(cartao => {
+                expect(cartao).to.haveOwnProperty('podeRecarregar').that.is.a('boolean');
+                expect(cartao).to.haveOwnProperty('podeVerDetalhes').that.is.a('boolean');
+            });
+        });
     });
+
 });

@@ -63,3 +63,26 @@ Cypress.Commands.add('ObterToken', () => {
     return token;
   });
 });
+
+
+
+
+Cypress.Commands.add('ObterTokenUsuarioSemCadastro', () => {
+  cy.request({
+    method: 'POST',
+    url: 'https://kim-idp-dev.usekim.com.br/realms/kim-tst/protocol/openid-connect/token',
+    form: true, // importante: envia como x-www-form-urlencoded
+    body: {
+      grant_type: 'password',
+      client_id: 'MICROSERVICE_USUARIO',
+      client_secret: 'XQdTOozAlhwcHlRlmbwQkYGF3oCUfOly', // opcional, só se o client exigir
+      username: 'admin.teste',
+      password: '12345678'
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+    const token2 = response.body.access_token;
+    Cypress.env('token2', token2);
+    return token2;
+  });
+});
