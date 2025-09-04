@@ -64,5 +64,65 @@
     "statusCartao": true,
     "expectedStatus": 200,
     "checkAcoes": true
+  },
+  "operadora_lista_sucesso": {
+    "expectedStatus": 200,
+    "expectEmpty": false,
+    "validateFields": true
+  },
+  "operadora_lista_vazia": {
+    "expectedStatus": 200,
+    "expectEmpty": true
+  },
+  "operadora_erro_token": {
+    "expectedStatus": 401
+  },
+  "operadora_erro_sem_ativas": {
+    "expectedStatus": 404,
+    "errorCode": "MSG-CARTOES-E-100013"
+  },
+  "operadora_filtro_nomeFantasia": {
+    "expectedStatus": 200,
+    "nomeFantasia": "Viaje Mais"
+  },
+  "operadora_filtro_cnpj": {
+    "expectedStatus": 200,
+    "numeroCnpj": "10058450011033"
+  },
+  "operadora_filtro_sigla": {
+    "expectedStatus": 200,
+    "sigla": "XPT"
+  },
+  "operadora_filtro_cidade": {
+    "expectedStatus": 200,
+    "idCidade": 2
+  },
+  "operadora_filtro_tipoIntegracao": {
+    "expectedStatus": 200,
+    "tipoIntegracaoCartao": "CIS02"
+  },
+  "operadora_filtro_codigoTitularRevenda": {
+    "expectedStatus": 200,
+    "codigoTitularRevenda": "958457"
+  },
+  "operadora_filtro_multiplos": {
+    "expectedStatus": 200,
+    "nomeFantasia": "KIM 2",
+    "idCidade": 1,
+    "tipoIntegracaoCartao": "BDN"
+  },
+  "operadora_sem_token": {
+    "expectedStatus": 401
+  },
+  "operadora_token_invalido": {
+    "expectedStatus": 200
+  },
+  "operadora_validacao_formato": {
+    "expectedStatus": 200,
+    "validateFormat": true
+  },
+  "operadora_parametro_invalido": {
+    "expectedStatus": [200, 400],
+    "idCidade": "ABC"
   }
 }

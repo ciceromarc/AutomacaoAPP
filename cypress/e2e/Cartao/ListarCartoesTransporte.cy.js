@@ -3,37 +3,41 @@ import * as Cartao from '../../integration/services/Cartao/requests/GET_Cartao.r
 
 describe('[CARTÕES] Listar cartões de transporte', () => {
 
-    beforeEach(function () {
+    beforeEach(() => {
+        cy.ObterTokenCartaoTransporte();
         cy.fixture('cartoes').as('cartoes');
-                cy.ObterToken();
     });
 
     it('Listar Cartões Físicos com Sucesso', function () {
         const data = this.cartoes.fisico_sucesso;
 
-        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
+        Cartao.CartaoTransporteusuario(data.tipoCartao).then((response) => {
             expect(response.status).to.eq(data.expectedStatus);
-            expect(response.body).to.be.not.null;
-            // expect(response.body).to.have.length.greaterThan(0);
-            cy.log('Status:', response.status);
+            expect(response.body).to.be.an('array').that.is.not.empty;
+
+            response.body.forEach(cartao => {
+                expect(cartao).to.have.all.keys(
+                    'operadora',
+                    'apelidoCartao',
+                    'numeroCartao',
+                    'tipoCartao',
+                    'status'
+                );
+            });
+
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
-    it('Listar Cartões Físicos sem Resultados', function () {
-        const data = this.cartoes.fisico_vazio;
 
-        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
-            expect(response.status).to.eq(data.expectedStatus);
-            expect(response.body).to.be.an('array').that.is.empty;
-        });
-    });
 
     it('Erro ao Listar Cartões Físicos', function () {
         const data = this.cartoes.fisico_erro;
 
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.be.oneOf(data.expectedStatus);
-            expect(response.body).to.have.property('error').or.property('message');
+            expect(response.body).to.have.any.keys('error', 'message');
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
@@ -42,7 +46,20 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
 
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.eq(data.expectedStatus);
-            expect(response.body).to.be.not.null;
+            expect(response.body).to.be.an('array').that.is.not.empty;
+
+            response.body.forEach(cartao => {
+                expect(cartao).to.have.all.keys(
+                    'operadora',
+                    'apelidoCartao',
+                    'numeroCartao',
+                    'tipoCartao',
+                    'status'
+                );
+                expect(cartao.tipoCartao).to.eq('VIRTUAL');
+            });
+
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
@@ -52,6 +69,7 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.an('array').that.is.empty;
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
@@ -60,16 +78,31 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
 
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.be.oneOf(data.expectedStatus);
-            expect(response.body).to.have.property('error').or.property('message');
+            expect(response.body).to.have.any.keys('error', 'message');
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
+
 
     it('Listar Cartões Inativos com Sucesso', function () {
         const data = this.cartoes.inativo_sucesso;
 
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.eq(data.expectedStatus);
-            expect(response.body).to.be.not.null;
+            expect(response.body).to.be.an('array').that.is.not.empty;
+
+            response.body.forEach(cartao => {
+                expect(cartao).to.have.all.keys(
+                    'operadora',
+                    'apelidoCartao',
+                    'numeroCartao',
+                    'tipoCartao',
+                    'status'
+                );
+                expect(cartao.status).to.eq('INATIVO');
+            });
+
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
@@ -79,30 +112,40 @@ describe('[CARTÕES] Listar cartões de transporte', () => {
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.eq(data.expectedStatus);
             expect(response.body).to.be.an('array').that.is.empty;
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
+
 
     it('Erro ao Listar Cartões Inativos', function () {
         const data = this.cartoes.inativo_erro;
 
         Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
             expect(response.status).to.be.oneOf(data.expectedStatus);
-            expect(response.body).to.have.property('error').or.property('message');
+            expect(response.body).to.have.any.keys('error', 'message');
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
 
-    it('Acesso a Funcionalidades de Ação (Recarregar, Detalhes)', function () {
-        const data = this.cartoes.com_acoes;
-
-        Cartao.CartaoTransporteusuario(data.tipoCartao, data.statusCartao).then((response) => {
-            expect(response.status).to.eq(data.expectedStatus);
-            expect(response.body).to.be.not.null;
+    it('Listar Todos os Cartões (sem filtros)', function () {
+        Cartao.CartaoTransporteusuario().then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.body).to.be.an('array');
 
             response.body.forEach(cartao => {
-                expect(cartao).to.haveOwnProperty('podeRecarregar').that.is.a('boolean');
-                expect(cartao).to.haveOwnProperty('podeVerDetalhes').that.is.a('boolean');
+                expect(cartao).to.have.all.keys(
+                    'operadora',
+                    'apelidoCartao',
+                    'numeroCartao',
+                    'tipoCartao',
+                    'status'
+                );
             });
+
+            cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
         });
     });
+
+
 
 });

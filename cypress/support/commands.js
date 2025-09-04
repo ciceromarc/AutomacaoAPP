@@ -66,6 +66,28 @@ Cypress.Commands.add('ObterToken', () => {
 
 
 
+Cypress.Commands.add('ObterTokenCartaoTransporte', () => {
+  cy.request({
+    method: 'POST',
+    url: 'https://kim-idp-dev.usekim.com.br/realms/kim-tst/protocol/openid-connect/token',
+    form: true, // importante: envia como x-www-form-urlencoded
+    body: {
+      grant_type: 'password',
+      client_id: 'MICROSERVICE_CARTAO',
+      client_secret: 'uRoVt3cBBbZZ8pgfxbs8jnhoejmUiADg', // opcional, só se o client exigir
+      username: 'cicero',
+      password: '123456'
+    }
+  }).then((response) => {
+    expect(response.status).to.eq(200);
+    const token = response.body.access_token;
+    Cypress.env('token', token);
+    return token;
+  });
+});
+
+
+
 
 Cypress.Commands.add('ObterTokenUsuarioSemCadastro', () => {
   cy.request({

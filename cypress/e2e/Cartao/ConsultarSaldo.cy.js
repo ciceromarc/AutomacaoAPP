@@ -3,7 +3,7 @@ import * as Cartao from '../../integration/services/Cartao/requests/GET_Saldo.re
 
 describe('[CARTÕES] Detalhar saldo do cartão físico de um usuário', () => {
   beforeEach(() => {
-    cy.ObterToken();
+        cy.ObterTokenCartaoTransporte();
   });
 
   it('Consultar saldo de cartão com número válido (via fixture)', () => {

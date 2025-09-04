@@ -1,6 +1,27 @@
 /// <reference types = "cypress"/>
 
 
+
+function ConsultarSaldoCartaoTransporteSemToken(numeroCartao, doctoIdentificacao, idOperadora = '1', timeout = 30000) {
+    const url = `cartao/api/v1/cartao/saldo?numeroCartao=${numeroCartao}&doctoIdentificacao=${doctoIdentificacao}`;
+
+    return cy.api({
+        method: 'GET',
+        url: url,
+        headers: {
+            'idOperadora': idOperadora,
+            'Authorization': ` `, // Sem token
+            'accept': 'application/json'
+        },
+        failOnStatusCode: false,
+        timeout: timeout // Define o tempo máximo para a requisição
+    });
+}
+
+
+
+
+
 function ConsultarSaldoCartaoTransporte(numeroCartao, doctoIdentificacao, idOperadora = '1', timeout = 30000) {
     const url = `cartao/api/v1/cartao/saldo?numeroCartao=${numeroCartao}&doctoIdentificacao=${doctoIdentificacao}`;
 
@@ -18,3 +39,4 @@ function ConsultarSaldoCartaoTransporte(numeroCartao, doctoIdentificacao, idOper
 }
 
 export { ConsultarSaldoCartaoTransporte };
+export { ConsultarSaldoCartaoTransporteSemToken };

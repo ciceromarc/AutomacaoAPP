@@ -11,7 +11,7 @@ describe('[CARTÕES] Detalhar saldo do cartão físico de um usuário', () => {
     const nomeCidade = 'Belo Horizonte';
 
     Cartao.ListarCidadesHomologadas(nomeCidade).then((response) => {
-      expect(response.status).to.eq(400); // ou o status esperado
+      expect(response.status).to.eq(200); // ou o status esperado
       cy.log('Status: ' + response.status);
       cy.log('Corpo da resposta: ' + JSON.stringify(response.body));
     });
@@ -50,12 +50,12 @@ describe('[CARTÕES] Detalhar saldo do cartão físico de um usuário', () => {
       // Verifica os campos de cada item do array
       response.body.forEach((cidade) => {
         // Verifica a existência dos campos
-        expect(cidade).to.have.property('id');
+        expect(cidade).to.have.property('idCidade');
         expect(cidade).to.have.property('nomeCidade');
         expect(cidade).to.have.property('codigoIbge');
 
         // Verifica os tipos dos campos
-        expect(cidade.id).to.be.a('number');
+        expect(cidade.idCidade).to.be.a('number');
         expect(cidade.nomeCidade).to.be.a('string').and.not.be.empty;
         expect(cidade.codigoIbge).to.be.a('string').and.not.be.empty;
       });
