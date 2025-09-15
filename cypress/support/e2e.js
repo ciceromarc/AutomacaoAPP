@@ -20,3 +20,4 @@ import 'cypress-plugin-api';
 //import '@bahmutov/cypress-cucumber-preprocessor/support';
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+import './utils';

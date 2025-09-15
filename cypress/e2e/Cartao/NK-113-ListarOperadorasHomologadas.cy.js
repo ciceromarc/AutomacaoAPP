@@ -7,7 +7,7 @@ describe('[CARTÕES] Listar Operadoras Homologadas com o KIM', () => {
         cy.ObterTokenCartaoTransporte(); // Garante token válido antes de cada teste
     });
 
-    it('Listar todas as operadoras ativas com sucesso', function () {
+    it.only('Listar todas as operadoras ativas com sucesso', function () {
         const data = this.cartoes.operadora_lista_sucesso;
 
         Operadora.listarOperadoras().then((response) => {

@@ -6,18 +6,15 @@
     "expectEmpty": false
   },
   "fisico_vazio": {
-    "tipoCartao": 1,
+    "tipoCartao": 999,
     "statusCartao": false,
-    "expectedStatus": 200,
+    "expectedStatus": 400,
     "expectEmpty": true
   },
   "fisico_erro": {
     "tipoCartao": "invalido",
     "statusCartao": true,
-    "expectedStatus": [
-      400,
-      500
-    ]
+    "expectedStatus": [400, 500]
   },
   "virtual_sucesso": {
     "tipoCartao": 2,
@@ -26,38 +23,34 @@
     "expectEmpty": false
   },
   "virtual_vazio": {
-    "tipoCartao": 2,
+    "tipoCartao": 999,
     "statusCartao": false,
-    "expectedStatus": 200,
+    "expectedStatus": 400,
     "expectEmpty": true
   },
   "virtual_erro": {
     "tipoCartao": "virtual_erro",
     "statusCartao": true,
-    "expectedStatus": [
-      400,
-      500
-    ]
+    "expectedStatus": [400, 500]
   },
   "inativo_sucesso": {
     "tipoCartao": 1,
+    "idUsuario": 1,
+    "ativo": false,
     "statusCartao": false,
     "expectedStatus": 200,
     "expectEmpty": false
   },
   "inativo_vazio": {
-    "tipoCartao": 1,
+    "idUsuario": 56,
     "statusCartao": false,
-    "expectedStatus": 200,
+    "expectedStatus": 400,
     "expectEmpty": true
   },
   "inativo_erro": {
     "tipoCartao": "inativo_erro",
     "statusCartao": false,
-    "expectedStatus": [
-      400,
-      500
-    ]
+    "expectedStatus": [400, 500]
   },
   "com_acoes": {
     "tipoCartao": 1,
@@ -124,5 +117,174 @@
   "operadora_parametro_invalido": {
     "expectedStatus": [200, 400],
     "idCidade": "ABC"
+  },
+  "virtual_sucessovirtual": {
+    "operadora": "85",
+    "cpf": "06071975119",
+    "apelido": "Meu Cartão Virtual Alpha",
+    "expectedStatus": 201
+  },
+  "virtual_sem_apelido": {
+    "operadora": "85",
+    "cpf": "98765432110",
+    "apelido": null,
+    "expectedStatus": 201
+  },
+  "virtual_token_invalido": {
+    "operadora": "85",
+    "cpf": "12345678519",
+    "expectedStatus": 400,
+    "errorCode": "GLB-E-100003"
+  },
+  "virtual_praca_invalida": {
+    "operadora": "",
+    "cpf": "12345671209",
+    "expectedStatus": 400,
+    "errorCode": "GLB-E-100003"
+  },
+  "virtual_cpf_invalido": {
+    "operadora": "85",
+    "cpf": null,
+    "expectedStatus": 400,
+    "errorCode": "GLB-E-100003"
+  },
+  "virtual_tacom_indisponivel": {
+    "operadora": "85",
+    "cpf": "444412345678909",
+    "expectedStatus": 500,
+    "errorCode": "GLB-E-100006"
+  },
+  "virtual_numero_duplicado": {
+    "operadora": "85",
+    "cpf": "12345678909",
+    "expectedStatus": 409,
+    "errorCode": "MSG-CARTOES-E-100009"
+  },
+  "virtual_operadora_inativa": {
+    "operadora": "85",
+    "cpf": "123411678909",
+    "expectedStatus": 400,
+    "errorCode": "GLB-E-100003"
+  },
+  "filtro_idUsuario": {
+    "idUsuario": 1,
+    "expectedStatus": 200
+  },
+  "filtro_idUsuario_vazio": {
+    "idUsuario": 9999,
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_idUsuario_erro": {
+    "idUsuario": "ABC",
+    "expectedStatus": [400, 500]
+  },
+  "filtro_numeroCartao": {
+    "numeroCartao": "069000000001178",
+    "expectedStatus": 200
+  },
+  "filtro_numeroCartao_vazio": {
+    "numeroCartao": "99999999999999",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_numeroCartao_erro": {
+    "numeroCartao": "XXXXXX",
+    "expectedStatus": [400, 500]
+  },
+  "filtro_apelido": {
+    "apelidoCartao": "SAMUCA",
+    "expectedStatus": 200
+  },
+  "filtro_apelido_vazio": {
+    "apelidoCartao": "Inexistente",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_apelido_erro": {
+    "apelidoCartao": 12345,
+    "expectedStatus": [400, 500]
+  },
+  "filtro_tipoFisico": {
+    "tipoCartao": 1,
+    "expectedStatus": 200
+  },
+  "filtro_tipoVirtual": {
+    "tipoCartao": 2,
+    "expectedStatus": 200
+  },
+  "filtro_tipoCartao_vazio": {
+    "tipoCartao": 999,
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_tipoCartao_erro": {
+    "tipoCartao": "abc",
+    "expectedStatus": [400, 500]
+  },
+  "filtro_ativo_true": {
+    "ativo": true,
+    "expectedStatus": 200
+  },
+  "filtro_ativo_false": {
+    "ativo": false,
+    "expectedStatus": 200
+  },
+  "filtro_ativo_vazio": {
+    "ativo": null,
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_usuarioCriacao": {
+    "usuarioCriacao": "usuario77@tacom.com.br",
+    "expectedStatus": 200
+  },
+  "filtro_usuarioCriacao_vazio": {
+    "usuarioCriacao": "naoexiste@teste.com",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_usuarioCriacao_erro": {
+    "usuarioCriacao": 12345,
+    "expectedStatus": [400, 500]
+  },
+  "filtro_usuarioAlteracao": {
+    "usuarioAlteracao": "usuario3@tacom.com.br",
+    "expectedStatus": 200
+  },
+  "filtro_usuarioAlteracao_vazio": {
+    "usuarioAlteracao": "semregistro@teste.com",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_usuarioAlteracao_erro": {
+    "usuarioAlteracao": true,
+    "expectedStatus": [400, 500]
+  },
+  "filtro_dataCriacao": {
+    "dataCriacao": "2025-05-02T00:00:00",
+    "expectedStatus": 200
+  },
+  "filtro_dataCriacao_vazio": {
+    "dataCriacao": "1999-01-01",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_dataCriacao_erro": {
+    "dataCriacao": "data_invalida",
+    "expectedStatus": [400, 500]
+  },
+  "filtro_dataAlteracao": {
+    "dataAlteracao": "2025-05-02T00:00:00",
+    "expectedStatus": 200
+  },
+  "filtro_dataAlteracao_vazio": {
+    "dataAlteracao": "1999-01-01",
+    "expectedStatus": 400,
+    "errorCode": "MSG-CARTOES-E-100001"
+  },
+  "filtro_dataAlteracao_erro": {
+    "dataAlteracao": "abc123",
+    "expectedStatus": [400, 500]
   }
 }

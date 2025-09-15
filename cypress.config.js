@@ -16,15 +16,6 @@ module.exports = defineConfig({
     supportFile: 'cypress/support/e2e.js'
   },
   
-  // Configurações para ambiente CI
-  video: true,
-  screenshotOnRunFailure: true,
-  chromeWebSecurity: false,
-  
-  // Configurações específicas para headless
-  browser: 'chrome',
-  headless: true,
-  
    env: {
     allure: true,
     allureResultsPath: 'allure-results'

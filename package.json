@@ -5,12 +5,9 @@
   "main": "index.js",
   "scripts": {
     "cypress:open": "./node_modules/.bin/cypress open",
-    "cypress:run": "./node_modules/.bin/cypress run --headless",
-    "cypress:run:ci": "./node_modules/.bin/cypress run --headless --browser chrome --config video=true,screenshotOnRunFailure=true",
-    "cypress:debug": "./node_modules/.bin/cypress run --headless --browser chrome --config video=true,screenshotOnRunFailure=true --reporter spec",
+    "cypress:run": "./node_modules/.bin/cypress run",
     "e2e": "cypress run --env allure=true",
-    "report:allure": "allure generate allure-results --clean -o allure-report && allure open  allure-report",
-    "report:allure:ci": "allure generate allure-results --single-file --clean -o allure-report"
+    "report:allure": "allure generate allure-results --clean -o allure-report && allure open  allure-report"                                                                            
   },
   "keywords": [],
   "author": "",
