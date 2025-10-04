@@ -1,0 +1,77 @@
+{
+  "cartaoValido": {
+    "numeroCartao": "036200000082367",
+    "dataUsoInicial": "2001-01-01",
+    "dataUsoFinal": "2025-12-31",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1000"
+  },
+  "cartaoVitoria": {
+    "numeroCartao": "06900000000031",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoSemUso": {
+    "numeroCartao": "06900000000032",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoInvalido": {
+    "numeroCartao": "00000000000000",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoNaoVinculado": {
+    "numeroCartao": "06900000000999",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoInexistente": {
+    "numeroCartao": "00000000000000",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "cartaoSemRegistros": {
+    "numeroCartao": "06900000000033",
+    "dataUsoInicial": "2024-08-26",
+    "dataUsoFinal": "2025-08-26",
+    "codigoCargaInicial": "1",
+    "codigoCargaFinal": "1"
+  },
+  "operadoras": {
+    "padrao": "1",
+    "tacom": "2",
+    "semIntegracao": "99",
+    "novoGama": "1",
+    "teofiloOtoni": "2",
+    "saoJoseCampos": "3",
+    "vitoria": "4",
+    "florianopolis": "5",
+    "novaLima": "6",
+    "saoPaulo": "7",
+    "campinas": "8",
+    "curitiba": "9",
+    "metroBahia": "10",
+    "beloHorizonte": "11",
+    "alagoinhas": "12",
+    "jaboatao": "13",
+    "camacari": "14",
+    "luziania": "15",
+    "portoAlegre": "16",
+    "salvadorMetropasse": "17",
+    "salvadorFeiraSantana": "18",
+    "taguatur": "19",
+    "catedral": "20",
+    "saoJoaoDelRei": "21"
+  }
+}
